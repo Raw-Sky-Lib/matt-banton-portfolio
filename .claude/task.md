@@ -57,7 +57,7 @@ Scaffold the Next.js 15 project with the full Phase 1 stack. Ends when `pnpm dev
 - [x] Add `.env.local` with placeholder keys:
   ```
   NEXT_PUBLIC_SUPABASE_URL=
-  NEXT_PUBLIC_SUPABASE_ANON_KEY=
+  NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=
   NEXT_PUBLIC_SITE_URL=
   ```
 - [x] Confirm `pnpm dev` starts on `localhost:3000`
@@ -69,7 +69,7 @@ Scaffold the Next.js 15 project with the full Phase 1 stack. Ends when `pnpm dev
 
 **Priority:** Urgent
 **Labels:** Design · Setup
-**Status:** Todo
+**Status:** Done
 
 ### Description
 Translate the Variants style guide export into code: CSS custom properties, font setup, and Tailwind v4 config. This is the single source of truth for all visual tokens — no raw hex values anywhere else.
@@ -78,7 +78,7 @@ Translate the Variants style guide export into code: CSS custom properties, font
 - Variants export must be finalised before this task starts
 
 ### Sub-tasks
-- [ ] `src/app/globals.css` — define all CSS custom properties from Variants export:
+- [x] `src/app/globals.css` — define all CSS custom properties from Variants export:
   ```css
   :root {
     --color-bg: ;           /* near-white — from Variants */
@@ -91,11 +91,11 @@ Translate the Variants style guide export into code: CSS custom properties, font
     --font-body: ;          /* sans-serif body — from Variants */
   }
   ```
-- [ ] Add font files to `public/fonts/` or configure `next/font` — match Variants font choices exactly
-- [ ] Wire fonts in `app/layout.tsx` via CSS variables (not className-based)
-- [ ] Configure Tailwind CSS v4 to reference CSS custom properties (via `@theme` in globals.css)
-- [ ] Set base styles in `globals.css`: body background, text colour, font-family defaults
-- [ ] Visual smoke test: render a heading + paragraph in the browser and confirm tokens applied
+- [x] Add font files to `public/fonts/` or configure `next/font` — match Variants font choices exactly
+- [x] Wire fonts in `app/layout.tsx` via CSS variables (not className-based)
+- [x] Configure Tailwind CSS v4 to reference CSS custom properties (via `@theme` in globals.css)
+- [x] Set base styles in `globals.css`: body background, text colour, font-family defaults
+- [x] Visual smoke test: render a heading + paragraph in the browser and confirm tokens applied
 
 ---
 
@@ -153,8 +153,27 @@ Database schema, TypeScript types, Supabase client setup, and all query function
 - [ ] `src/utils/cn.ts` — `clsx` + `twMerge` helper
 - [ ] `src/utils/date.ts` — `formatYear(date: string): string`
 
+#### Health check — keep free Supabase instance alive
+Free Supabase projects pause after 7 days of inactivity. A Vercel Cron pings a lightweight
+route every 3 days to prevent this.
+
+- [ ] `src/app/api/health/route.ts` — `GET` handler: runs `from('site_settings').select('site_name').limit(1)` via server Supabase client; returns `{ ok: true }` on success, `{ ok: false }` + status 503 on error
+- [ ] `vercel.json` — add cron entry:
+  ```json
+  {
+    "crons": [
+      {
+        "path": "/api/health",
+        "schedule": "0 0 */3 * *"
+      }
+    ]
+  }
+  ```
+  `0 0 */3 * *` = midnight UTC every 3 days. Within Vercel Hobby plan limits (max 2 crons, min daily).
+
 #### Verify
 - [ ] `pnpm build` passes clean after all types and queries are in place
+- [ ] `GET /api/health` returns `{ ok: true }` once Supabase env vars are filled in
 
 ---
 

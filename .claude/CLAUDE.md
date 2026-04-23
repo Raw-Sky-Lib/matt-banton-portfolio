@@ -313,7 +313,7 @@ Per-slug pages (`/projects/[slug]`) generate their own metadata from project dat
 ```env
 # Required — Phase 1
 NEXT_PUBLIC_SUPABASE_URL=
-NEXT_PUBLIC_SUPABASE_ANON_KEY=
+NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY=
 NEXT_PUBLIC_SITE_URL=
 
 # Phase 2 only — do not add in Phase 1
