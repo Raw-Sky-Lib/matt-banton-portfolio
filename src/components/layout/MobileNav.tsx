@@ -3,12 +3,13 @@
 import { motion, AnimatePresence } from "framer-motion"
 import Link from "next/link"
 import { useState, useEffect } from "react"
+import type { NavItem } from "@/types/content"
 
-const NAV_ITEMS = [
-  { label: "Work",    href: "/projects" },
-  { label: "About",   href: "/about"    },
-  { label: "Gallery", href: "/gallery"  },
-  { label: "Contact", href: "/contact"  },
+const FALLBACK_ITEMS: NavItem[] = [
+  { id: "1", label: "Work",    url: "/projects", order: 1, is_external: false },
+  { id: "2", label: "About",   url: "/about",    order: 2, is_external: false },
+  { id: "3", label: "Gallery", url: "/gallery",  order: 3, is_external: false },
+  { id: "4", label: "Contact", url: "/contact",  order: 4, is_external: false },
 ]
 
 const ease = [0.32, 0.72, 0, 1] as const
@@ -31,8 +32,14 @@ const captionVariants = {
   exit:    { opacity: 0, transition: { duration: 0.15 } },
 }
 
-export default function MobileNav({ light = false }: { light?: boolean }) {
+interface MobileNavProps {
+  light?: boolean
+  items?: NavItem[]
+}
+
+export default function MobileNav({ light = false, items }: MobileNavProps) {
   const [open, setOpen] = useState(false)
+  const navItems = items ?? FALLBACK_ITEMS
 
   useEffect(() => {
     document.body.style.overflow = open ? "hidden" : ""
@@ -56,7 +63,7 @@ export default function MobileNav({ light = false }: { light?: boolean }) {
         onClick={() => setOpen(true)}
         className="flex flex-col items-center justify-center gap-1.5 w-8 h-8"
         aria-label="Open navigation"
-        aria-expanded={open ? "true" : "false"}
+        aria-haspopup="true"
       >
         <span className={`block w-4.5 h-px ${lineClass}`} />
         <span className={`block w-3.5 h-px self-start ml-0.5 ${lineClass}`} />
@@ -103,21 +110,22 @@ export default function MobileNav({ light = false }: { light?: boolean }) {
             </div>
 
             {/* Nav links — vertically centred */}
-            <nav className="flex-1 flex flex-col justify-center gap-0">
-              {NAV_ITEMS.map(({ label, href }, i) => (
+            <nav className="flex-1 flex flex-col justify-center gap-0" aria-label="Main navigation">
+              {navItems.map((item, i) => (
                 <motion.div
-                  key={href}
+                  key={item.id}
                   variants={itemVariants(i)}
                   initial="hidden"
                   animate="visible"
                   exit="exit"
                 >
                   <Link
-                    href={href}
+                    href={item.url}
                     onClick={() => setOpen(false)}
                     className="mobile-nav-item mobile-nav-link block py-3 select-none font-bold uppercase"
+                    {...(item.is_external ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                   >
-                    {label}
+                    {item.label}
                   </Link>
                 </motion.div>
               ))}
@@ -131,7 +139,7 @@ export default function MobileNav({ light = false }: { light?: boolean }) {
               exit="exit"
               className="mobile-nav-caption text-[10px] font-medium uppercase tracking-[0.22em]"
             >
-              Vienna, Austria · Photography &amp; Film
+              Photography &amp; Film
             </motion.p>
           </motion.div>
         )}
