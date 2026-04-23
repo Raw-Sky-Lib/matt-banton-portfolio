@@ -22,17 +22,17 @@ Scaffold the Next.js 15 project with the full Phase 1 stack. Ends when `pnpm dev
 - [ ] Lightbox decision confirmed: yes or no?
 
 ### Sub-tasks
-- [ ] Create Next.js 15 app: `pnpm create next-app@latest . --typescript --tailwind --app --src-dir --import-alias "@/*"`
-- [ ] Verify `tsconfig.json` has `"strict": true`
-- [ ] Install core dependencies:
+- [x] Create Next.js 15 app: `pnpm create next-app@latest . --typescript --tailwind --app --src-dir --import-alias "@/*"`
+- [x] Verify `tsconfig.json` has `"strict": true`
+- [x] Install core dependencies:
   ```
   pnpm add framer-motion react-hook-form @hookform/resolvers zod
   pnpm add @supabase/supabase-js @supabase/ssr
   pnpm add clsx tailwind-merge
   ```
-- [ ] Initialise shadcn/ui: `pnpm dlx shadcn@latest init` (select neutral base colour, CSS variables on)
-- [ ] Add shadcn primitives needed: `button`, `input`, `textarea`, `label`
-- [ ] Create folder structure:
+- [x] Initialise shadcn/ui: `pnpm dlx shadcn@latest init` (select neutral base colour, CSS variables on)
+- [x] Add shadcn primitives needed: `button`, `input`, `textarea`, `label`
+- [x] Create folder structure:
   ```
   src/
     app/
@@ -54,14 +54,14 @@ Scaffold the Next.js 15 project with the full Phase 1 stack. Ends when `pnpm dev
     types/
     utils/
   ```
-- [ ] Add `.env.local` with placeholder keys:
+- [x] Add `.env.local` with placeholder keys:
   ```
   NEXT_PUBLIC_SUPABASE_URL=
   NEXT_PUBLIC_SUPABASE_ANON_KEY=
   NEXT_PUBLIC_SITE_URL=
   ```
-- [ ] Confirm `pnpm dev` starts on `localhost:3000`
-- [ ] Confirm `pnpm build` passes with no errors
+- [x] Confirm `pnpm dev` starts on `localhost:3000`
+- [x] Confirm `pnpm build` passes with no errors
 
 ---
 
