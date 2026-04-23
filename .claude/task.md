@@ -103,7 +103,7 @@ Translate the Variants style guide export into code: CSS custom properties, font
 
 **Priority:** High
 **Labels:** Backend · Database
-**Status:** Todo
+**Status:** Done
 
 ### Description
 Database schema, TypeScript types, Supabase client setup, and all query functions. Every Supabase read for Phase 1 is written here and nowhere else. `pnpm build` must stay clean after this task.
@@ -111,54 +111,54 @@ Database schema, TypeScript types, Supabase client setup, and all query function
 ### Sub-tasks
 
 #### Supabase migrations
-- [ ] `site_settings` — `site_name`, `tagline`, `bio_short`, `contact_email`, `location`, `availability_status`, `resume_url`, `og_image_url`, `seo_title`, `seo_description`, `social_instagram`, `social_linkedin`, `social_twitter`, `analytics_id`
-- [ ] `nav_items` — `id`, `label`, `url`, `order`, `is_external`
-- [ ] `projects` — `id`, `slug`, `title`, `category`, `cover_image_url`, `year`, `client` (nullable), `description`, `is_featured`, `is_published`, `order`
-- [ ] `project_images` — `id`, `project_id`, `image_url`, `caption` (nullable), `order`
-- [ ] `gallery_images` — `id`, `collection_id` (nullable), `image_url`, `caption` (nullable), `alt_text`, `is_published`, `order`
-- [ ] `gallery_collections` — `id`, `slug`, `title`, `description` (nullable), `cover_image_url`, `is_published`, `order`
-- [ ] `about_content` — `headline`, `bio_body` (HTML text), `profile_image_url`, `approach_text` (nullable), `resume_url` (nullable)
-- [ ] `form_submissions` — `id`, `name`, `email`, `subject` (nullable), `message`, `submitted_at`
-- [ ] RLS: all tables allow public `SELECT`; only `form_submissions` allows public `INSERT`; no `UPDATE` or `DELETE` for anon
+- [x] `site_settings` — `site_name`, `tagline`, `bio_short`, `contact_email`, `location`, `availability_status`, `resume_url`, `og_image_url`, `seo_title`, `seo_description`, `social_instagram`, `social_linkedin`, `social_twitter`, `analytics_id`
+- [x] `nav_items` — `id`, `label`, `url`, `order`, `is_external`
+- [x] `projects` — `id`, `slug`, `title`, `category`, `cover_image_url`, `year`, `client` (nullable), `description`, `is_featured`, `is_published`, `order`
+- [x] `project_images` — `id`, `project_id`, `image_url`, `caption` (nullable), `order`
+- [x] `gallery_images` — `id`, `collection_id` (nullable), `image_url`, `caption` (nullable), `alt_text`, `is_published`, `order`
+- [x] `gallery_collections` — `id`, `slug`, `title`, `description` (nullable), `cover_image_url`, `is_published`, `order`
+- [x] `about_content` — `headline`, `bio_body` (HTML text), `profile_image_url`, `approach_text` (nullable), `resume_url` (nullable)
+- [x] `form_submissions` — `id`, `name`, `email`, `subject` (nullable), `message`, `submitted_at`
+- [x] RLS: all tables allow public `SELECT`; only `form_submissions` allows public `INSERT`; no `UPDATE` or `DELETE` for anon
 
 #### TypeScript types — `src/types/content.ts`
-- [ ] `SiteSettings` interface
-- [ ] `NavItem` interface
-- [ ] `Project` interface
-- [ ] `ProjectImage` interface
-- [ ] `GalleryImage` interface
-- [ ] `GalleryCollection` interface
-- [ ] `AboutContent` interface
+- [x] `SiteSettings` interface
+- [x] `NavItem` interface
+- [x] `Project` interface
+- [x] `ProjectImage` interface
+- [x] `GalleryImage` interface
+- [x] `GalleryCollection` interface
+- [x] `AboutContent` interface
 
 #### Supabase clients — `src/lib/supabase/`
-- [ ] `server.ts` — `createServerClient()` using `@supabase/ssr`, anon key only, for Server Components and Route Handlers
-- [ ] `client.ts` — `createBrowserSupabase()` using `@supabase/ssr`, for contact form client component only
+- [x] `server.ts` — `createServerClient()` using `@supabase/ssr`, anon key only, for Server Components and Route Handlers
+- [x] `client.ts` — `createBrowserSupabase()` using `@supabase/ssr`, for contact form client component only
 
 #### Query functions — `src/lib/queries.ts`
-- [ ] `getSiteSettings(): Promise<SiteSettings>`
-- [ ] `getNavItems(): Promise<NavItem[]>`
-- [ ] `getFeaturedProjects(): Promise<Project[]>`
-- [ ] `getAllProjects(): Promise<Project[]>`
-- [ ] `getProjectCategories(): Promise<string[]>` — distinct categories, data-driven
-- [ ] `getProjectBySlug(slug: string): Promise<Project | null>`
-- [ ] `getProjectSlugs(): Promise<string[]>` — for `generateStaticParams`
-- [ ] `getProjectImages(projectId: string): Promise<ProjectImage[]>`
-- [ ] `getGalleryImages(): Promise<GalleryImage[]>`
-- [ ] `getGalleryCollections(): Promise<GalleryCollection[]>` — for Option B if in scope
-- [ ] `getGalleryCollectionBySlug(slug: string): Promise<GalleryCollection | null>` — Option B
-- [ ] `getGalleryImagesByCollection(collectionId: string): Promise<GalleryImage[]>` — Option B
-- [ ] `getAboutContent(): Promise<AboutContent>`
+- [x] `getSiteSettings(): Promise<SiteSettings>`
+- [x] `getNavItems(): Promise<NavItem[]>`
+- [x] `getFeaturedProjects(): Promise<Project[]>`
+- [x] `getAllProjects(): Promise<Project[]>`
+- [x] `getProjectCategories(): Promise<string[]>` — distinct categories, data-driven
+- [x] `getProjectBySlug(slug: string): Promise<Project | null>`
+- [x] `getProjectSlugs(): Promise<string[]>` — for `generateStaticParams`
+- [x] `getProjectImages(projectId: string): Promise<ProjectImage[]>`
+- [x] `getGalleryImages(): Promise<GalleryImage[]>`
+- [x] `getGalleryCollections(): Promise<GalleryCollection[]>` — for Option B if in scope
+- [x] `getGalleryCollectionBySlug(slug: string): Promise<GalleryCollection | null>` — Option B
+- [x] `getGalleryImagesByCollection(collectionId: string): Promise<GalleryImage[]>` — Option B
+- [x] `getAboutContent(): Promise<AboutContent>`
 
 #### Utils
-- [ ] `src/utils/cn.ts` — `clsx` + `twMerge` helper
-- [ ] `src/utils/date.ts` — `formatYear(date: string): string`
+- [x] `src/utils/date.ts` — `formatYear(date: string): string` (already existed from MAT-6)
+- [x] `src/lib/utils.ts` — `cn()` helper lives here per CLAUDE.md (shadcn standard location)
 
 #### Health check — keep free Supabase instance alive
 Free Supabase projects pause after 7 days of inactivity. A Vercel Cron pings a lightweight
 route every 3 days to prevent this.
 
-- [ ] `src/app/api/health/route.ts` — `GET` handler: runs `from('site_settings').select('site_name').limit(1)` via server Supabase client; returns `{ ok: true }` on success, `{ ok: false }` + status 503 on error
-- [ ] `vercel.json` — add cron entry:
+- [x] `src/app/api/health/route.ts` — `GET` handler: runs `from('site_settings').select('site_name').limit(1)` via server Supabase client; returns `{ ok: true }` on success, `{ ok: false }` + status 503 on error
+- [x] `vercel.json` — add cron entry:
   ```json
   {
     "crons": [
@@ -172,8 +172,8 @@ route every 3 days to prevent this.
   `0 0 */3 * *` = midnight UTC every 3 days. Within Vercel Hobby plan limits (max 2 crons, min daily).
 
 #### Verify
-- [ ] `pnpm build` passes clean after all types and queries are in place
-- [ ] `GET /api/health` returns `{ ok: true }` once Supabase env vars are filled in
+- [x] `pnpm build` passes clean after all types and queries are in place
+- [x] `GET /api/health` returns `{ ok: true }` once Supabase env vars are filled in
 
 ---
 

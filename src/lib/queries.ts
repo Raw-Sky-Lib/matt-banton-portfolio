@@ -10,7 +10,7 @@ import type {
 } from '@/types/content'
 
 export async function getSiteSettings(): Promise<SiteSettings> {
-  const supabase = await createServerSupabase()
+  const supabase = createServerSupabase()
   const { data, error } = await supabase
     .from('site_settings')
     .select('*')
@@ -21,7 +21,7 @@ export async function getSiteSettings(): Promise<SiteSettings> {
 }
 
 export async function getNavItems(): Promise<NavItem[]> {
-  const supabase = await createServerSupabase()
+  const supabase = createServerSupabase()
   const { data, error } = await supabase
     .from('nav_items')
     .select('*')
@@ -31,7 +31,7 @@ export async function getNavItems(): Promise<NavItem[]> {
 }
 
 export async function getFeaturedProjects(): Promise<Project[]> {
-  const supabase = await createServerSupabase()
+  const supabase = createServerSupabase()
   const { data, error } = await supabase
     .from('projects')
     .select('*')
@@ -43,7 +43,7 @@ export async function getFeaturedProjects(): Promise<Project[]> {
 }
 
 export async function getAllProjects(): Promise<Project[]> {
-  const supabase = await createServerSupabase()
+  const supabase = createServerSupabase()
   const { data, error } = await supabase
     .from('projects')
     .select('*')
@@ -54,7 +54,7 @@ export async function getAllProjects(): Promise<Project[]> {
 }
 
 export async function getProjectCategories(): Promise<string[]> {
-  const supabase = await createServerSupabase()
+  const supabase = createServerSupabase()
   const { data, error } = await supabase
     .from('projects')
     .select('category')
@@ -65,7 +65,7 @@ export async function getProjectCategories(): Promise<string[]> {
 }
 
 export async function getProjectBySlug(slug: string): Promise<Project | null> {
-  const supabase = await createServerSupabase()
+  const supabase = createServerSupabase()
   const { data, error } = await supabase
     .from('projects')
     .select('*')
@@ -77,7 +77,7 @@ export async function getProjectBySlug(slug: string): Promise<Project | null> {
 }
 
 export async function getProjectSlugs(): Promise<string[]> {
-  const supabase = await createServerSupabase()
+  const supabase = createServerSupabase()
   const { data, error } = await supabase
     .from('projects')
     .select('slug')
@@ -87,7 +87,7 @@ export async function getProjectSlugs(): Promise<string[]> {
 }
 
 export async function getProjectImages(projectId: string): Promise<ProjectImage[]> {
-  const supabase = await createServerSupabase()
+  const supabase = createServerSupabase()
   const { data, error } = await supabase
     .from('project_images')
     .select('*')
@@ -98,7 +98,7 @@ export async function getProjectImages(projectId: string): Promise<ProjectImage[
 }
 
 export async function getGalleryImages(): Promise<GalleryImage[]> {
-  const supabase = await createServerSupabase()
+  const supabase = createServerSupabase()
   const { data, error } = await supabase
     .from('gallery_images')
     .select('*')
@@ -109,7 +109,7 @@ export async function getGalleryImages(): Promise<GalleryImage[]> {
 }
 
 export async function getGalleryCollections(): Promise<GalleryCollection[]> {
-  const supabase = await createServerSupabase()
+  const supabase = createServerSupabase()
   const { data, error } = await supabase
     .from('gallery_collections')
     .select('*')
@@ -122,7 +122,7 @@ export async function getGalleryCollections(): Promise<GalleryCollection[]> {
 export async function getGalleryCollectionBySlug(
   slug: string
 ): Promise<GalleryCollection | null> {
-  const supabase = await createServerSupabase()
+  const supabase = createServerSupabase()
   const { data, error } = await supabase
     .from('gallery_collections')
     .select('*')
@@ -136,7 +136,7 @@ export async function getGalleryCollectionBySlug(
 export async function getGalleryImagesByCollection(
   collectionId: string
 ): Promise<GalleryImage[]> {
-  const supabase = await createServerSupabase()
+  const supabase = createServerSupabase()
   const { data, error } = await supabase
     .from('gallery_images')
     .select('*')
@@ -148,7 +148,7 @@ export async function getGalleryImagesByCollection(
 }
 
 export async function getAboutContent(): Promise<AboutContent> {
-  const supabase = await createServerSupabase()
+  const supabase = createServerSupabase()
   const { data, error } = await supabase
     .from('about_content')
     .select('*')

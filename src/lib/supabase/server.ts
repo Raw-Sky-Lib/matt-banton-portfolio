@@ -1,28 +1,10 @@
-import { createServerClient } from '@supabase/ssr'
-import { cookies } from 'next/headers'
+import { createClient } from '@supabase/supabase-js'
 
-export async function createServerSupabase() {
-  const cookieStore = await cookies()
-
-  return createServerClient(
+// No auth in this project — plain anon client is sufficient for public reads
+// and works in both request-time Server Components and build-time generateStaticParams.
+export function createServerSupabase() {
+  return createClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!,
-    {
-      cookies: {
-        getAll() {
-          return cookieStore.getAll()
-        },
-        setAll(cookiesToSet) {
-          try {
-            cookiesToSet.forEach(({ name, value, options }) =>
-              cookieStore.set(name, value, options)
-            )
-          } catch {
-            // Silently ignore — setAll called from a Server Component
-            // where response cookies cannot be set.
-          }
-        },
-      },
-    }
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY!
   )
 }
