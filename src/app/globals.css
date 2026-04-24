@@ -71,6 +71,7 @@
   --color-border: #e0e0e0;
   --color-accent: #111111;
   --color-dark-surface: #161616;
+  --color-works-bg: #0a0a0a;
   --color-dark-text: #fafafa;
   --color-dark-text-muted: #888888;
 
@@ -306,6 +307,102 @@
   color: rgba(255, 255, 255, 0.28);
 }
 
+/* ── Shared section typography ── */
+.section-eyebrow {
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--color-text-muted);
+}
+.section-text-link {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: var(--color-text-muted);
+  transition: color 0.22s ease;
+}
+.section-text-link:hover {
+  color: var(--color-text);
+}
+
+/* ── Project card ── */
+.project-card-meta {
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: var(--color-text-muted);
+}
+.project-card-title {
+  font-family: var(--font-display), serif;
+  font-size: clamp(18px, 2vw, 26px);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  color: var(--color-text);
+}
+
+/* ── About teaser ── */
+.about-teaser-headline {
+  font-family: var(--font-display), serif;
+  font-size: clamp(26px, 3.5vw, 48px);
+  font-weight: 400;
+  letter-spacing: -0.01em;
+  line-height: 1.1;
+  color: var(--color-text);
+}
+.about-teaser-bio {
+  font-size: clamp(15px, 1.2vw, 17px);
+  line-height: 1.75;
+  color: var(--color-text-muted);
+  max-width: 42ch;
+}
+
+/* ── CTA strip ── */
+.cta-section {
+  background-color: var(--color-dark-surface);
+}
+.cta-eyebrow {
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.25em;
+  color: var(--color-dark-text-muted);
+  margin-bottom: 1.5rem;
+}
+.cta-headline {
+  font-family: var(--font-display), serif;
+  font-size: clamp(44px, 7vw, 104px);
+  font-weight: 400;
+  letter-spacing: -0.02em;
+  line-height: 0.95;
+  color: var(--color-dark-text);
+}
+.cta-link-primary {
+  font-size: 11px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: var(--color-dark-text);
+  border-bottom: 1px solid rgba(255,255,255,0.25);
+  padding-bottom: 2px;
+  transition: border-color 0.22s ease;
+}
+.cta-link-primary:hover {
+  border-color: var(--color-dark-text);
+}
+.cta-link-secondary {
+  font-size: 11px;
+  font-weight: 400;
+  letter-spacing: 0.05em;
+  color: var(--color-dark-text-muted);
+  transition: color 0.22s ease;
+}
+.cta-link-secondary:hover {
+  color: var(--color-dark-text);
+}
+
 /* ── Header ── */
 .header-top {
   background-color: transparent;
@@ -357,6 +454,143 @@
   letter-spacing: 0.2em;
   color: var(--color-dark-text-muted);
   opacity: 0.55;
+}
+
+/* ── Featured Projects (hero continuation) ── */
+.works-section {
+  position: relative;
+  overflow: hidden;
+  background:
+    linear-gradient(180deg, #040404 0%, #090909 28%, #0f0f0f 100%);
+  color: var(--color-dark-text);
+}
+.works-section-glow {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(90px);
+  opacity: 0.22;
+  pointer-events: none;
+}
+.works-section-glow-left {
+  width: 24rem;
+  height: 24rem;
+  top: 8rem;
+  left: -8rem;
+  background: rgba(255, 255, 255, 0.09);
+}
+.works-section-glow-right {
+  width: 28rem;
+  height: 28rem;
+  right: -10rem;
+  bottom: 4rem;
+  background: rgba(255, 255, 255, 0.08);
+}
+.works-section-eyebrow {
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.28em;
+  color: rgba(255, 255, 255, 0.55);
+}
+.works-section-heading {
+  font-family: var(--font-heading), sans-serif;
+  font-size: clamp(52px, 9vw, 124px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 0.9;
+  color: #ffffff;
+}
+.featured-project-card {
+  display: block;
+  color: inherit;
+  transition: transform 0.45s cubic-bezier(0.32, 0.72, 0, 1);
+}
+.featured-project-card:hover {
+  transform: translateY(-4px);
+}
+.featured-project-media {
+  position: relative;
+  overflow: hidden;
+  border-radius: 1.5rem;
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.02));
+  border: 1px solid rgba(255, 255, 255, 0.08);
+}
+.featured-project-media::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: inherit;
+  box-shadow: inset 0 0 0 1px rgba(255, 255, 255, 0.04);
+  pointer-events: none;
+}
+.featured-project-media-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.08) 0%, rgba(0, 0, 0, 0.62) 100%);
+}
+.featured-project-media-sheen {
+  position: absolute;
+  inset: -35% auto auto -20%;
+  width: 50%;
+  height: 160%;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.22), rgba(255, 255, 255, 0));
+  opacity: 0;
+  transform: rotate(18deg) translateX(0);
+  transition:
+    opacity 0.45s ease,
+    transform 0.8s cubic-bezier(0.32, 0.72, 0, 1);
+  pointer-events: none;
+}
+.featured-project-card:hover .featured-project-media-sheen {
+  opacity: 0.5;
+  transform: rotate(18deg) translateX(160%);
+}
+.featured-project-caption {
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: rgba(255, 255, 255, 0.62);
+  margin-bottom: 0.7rem;
+}
+.featured-project-title {
+  font-family: var(--font-heading), sans-serif;
+  font-size: clamp(22px, 3vw, 40px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  line-height: 0.95;
+  color: #ffffff;
+  max-width: 11ch;
+}
+.featured-project-icon {
+  color: rgba(255, 255, 255, 0.72);
+  transform: translate3d(0, 6px, 0);
+  opacity: 0;
+  transition:
+    transform 0.35s ease,
+    opacity 0.35s ease,
+    color 0.35s ease;
+}
+.featured-project-card:hover .featured-project-icon {
+  color: #ffffff;
+  transform: translate3d(0, 0, 0);
+  opacity: 1;
+}
+.featured-project-meta {
+  font-size: 10px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.22em;
+  color: rgba(255, 255, 255, 0.42);
+}
+.featured-project-index {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.24em;
+  color: rgba(255, 255, 255, 0.3);
 }
 
 /* Full-bleed background video sizing trick:

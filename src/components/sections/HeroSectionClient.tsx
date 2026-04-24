@@ -124,7 +124,7 @@ function NavLink({
   )
 }
 
-export default function HeroSectionClient() {
+export default function HeroSectionClient({ siteName }: { siteName: string }) {
   return (
     <div className="relative h-screen w-screen overflow-hidden bg-black">
       <LoaderScreen />
@@ -161,7 +161,7 @@ export default function HeroSectionClient() {
           {/* eslint-disable-next-line @next/next/no-img-element */}
           <img
             src="/logo.webp"
-            alt="Matt Banton"
+            alt={siteName}
             className="h-8 sm:h-9 md:h-11 lg:h-12 w-auto object-contain rounded-lg"
           />
 
