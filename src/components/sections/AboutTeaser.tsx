@@ -1,5 +1,4 @@
-import type { SiteSettings } from '@/types/content'
-import type { AboutContent } from '@/types/content'
+import type { SiteSettings, AboutContent } from '@/types/content'
 import AboutTeaserClient from './AboutTeaserClient'
 
 interface AboutTeaserProps {
@@ -9,11 +8,12 @@ interface AboutTeaserProps {
 
 export default function AboutTeaser({ settings, about }: AboutTeaserProps) {
   return (
-    <section className="px-6 sm:px-8 md:px-10 xl:px-12 2xl:px-16 py-24 md:py-32 border-t border-[var(--color-border)]">
+    <section className="bg-warm-bg">
       <AboutTeaserClient
         headline={about.headline}
         bioShort={settings.bio_short}
         profileImageUrl={about.profile_image_url}
+        location={settings.location}
       />
     </section>
   )

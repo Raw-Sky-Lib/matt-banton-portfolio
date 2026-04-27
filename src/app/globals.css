@@ -18,6 +18,10 @@
   --color-border: var(--color-border);
   --color-accent: var(--color-accent);
   --color-dark-surface: var(--color-dark-surface);
+  --color-warm-bg: var(--color-warm-bg);
+  --color-warm-card: var(--color-warm-card);
+  --color-warm-panel: var(--color-warm-panel);
+  --color-warm-placeholder: var(--color-warm-placeholder);
 
   /* shadcn tokens */
   --color-background: var(--background);
@@ -75,6 +79,12 @@
   --color-dark-text: #fafafa;
   --color-dark-text-muted: #888888;
 
+  /* Warm light palette — V2 direction */
+  --color-warm-bg: #f4efe8;
+  --color-warm-card: #fbf7f1;
+  --color-warm-panel: #efe7dc;
+  --color-warm-placeholder: #ddd4c8;
+
   /* === shadcn tokens (mapped to project palette) === */
   --background: #f5f5f5;
   --foreground: #111111;
@@ -127,7 +137,7 @@
   font-size: 11vw;
   line-height: 0.9;
   letter-spacing: -0.02em;
-  font-family: var(--font-display), serif;
+  font-family: var(--font-display), sans-serif;
 }
 
 @media (min-width: 1600px) {
@@ -336,7 +346,7 @@
   color: var(--color-text-muted);
 }
 .project-card-title {
-  font-family: var(--font-display), serif;
+  font-family: var(--font-display), sans-serif;
   font-size: clamp(18px, 2vw, 26px);
   font-weight: 400;
   letter-spacing: -0.01em;
@@ -345,18 +355,19 @@
 
 /* ── About teaser ── */
 .about-teaser-headline {
-  font-family: var(--font-display), serif;
-  font-size: clamp(26px, 3.5vw, 48px);
-  font-weight: 400;
-  letter-spacing: -0.01em;
-  line-height: 1.1;
-  color: var(--color-text);
+  font-family: var(--font-heading), sans-serif;
+  font-size: clamp(34px, 5vw, 72px);
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  line-height: 0.9;
+  color: #111111;
 }
 .about-teaser-bio {
-  font-size: clamp(15px, 1.2vw, 17px);
+  font-size: 15px;
   line-height: 1.75;
-  color: var(--color-text-muted);
-  max-width: 42ch;
+  color: rgba(0, 0, 0, 0.56);
+  max-width: 38ch;
 }
 
 /* ── CTA strip ── */
@@ -372,7 +383,7 @@
   margin-bottom: 1.5rem;
 }
 .cta-headline {
-  font-family: var(--font-display), serif;
+  font-family: var(--font-display), sans-serif;
   font-size: clamp(44px, 7vw, 104px);
   font-weight: 400;
   letter-spacing: -0.02em;
@@ -421,7 +432,7 @@
   /* generous breathing room inside the dark block */
 }
 .footer-name {
-  font-family: var(--font-display), serif;
+  font-family: var(--font-display), sans-serif;
   font-size: clamp(28px, 4vw, 52px);
   font-weight: 500;
   letter-spacing: -0.01em;
